@@ -45,32 +45,33 @@ public class AddTask extends Actions {
      */
     @Override
     public String readUserInput() {
-        while (true) {
-            System.out.println("");
-            System.out.print("Enter Information: ");
-            Scanner in = new Scanner(System.in);
-            String userInput = in.nextLine();
-
-            if (!userInput.equals("0")) {
-                String[] parts = userInput.split(",");
-                if (parts.length == 5) {
-                    if (DateSorting.isDateValid("dd-MM-yyyy", parts[2])) {
-                        if (TodoList.tasks.get(parts[0]) == null) {
-                            return userInput;
-                        } else {
-                            System.out.println("A task with this ID already exists, try again: ");
-                        }
-                    } else {
-                        System.out.println("The date entered is invalid, try again: ");
-                    }
-                } else {
-                    System.out.println("Please follow instructions, try again: ");
-                }
-            } else {
-                return userInput;
-            }
+    while (true) {
+        System.out.println("");
+        System.out.print("Enter Information: ");
+        Scanner in = new Scanner(System.in);
+        String userInput = in.nextLine();
+        if (userInput.equals("0")) {
+            return userInput;
+        }
+        String[] parts = userInput.split(",");
+        boolean isValidInput = true;
+        if (parts.length != 5) {
+            System.out.println("Please follow instructions, try again: ");
+            isValidInput = false;
+        }
+        if (isValidInput && !DateSorting.isDateValid("dd-MM-yyyy", parts[2])) {
+            System.out.println("The date entered is invalid, try again: ");
+            isValidInput = false;
+        }
+        if (isValidInput && TodoList.tasks.get(parts[0]) != null) {
+            System.out.println("A task with this ID already exists, try again: ");
+            isValidInput = false;
+        }
+        if (isValidInput) {
+            return userInput;
         }
     }
+}
 
     /**
      * In this overridden method reside the implementation of

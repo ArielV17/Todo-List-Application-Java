@@ -22,14 +22,8 @@ import java.util.stream.Collectors;
 
 public class SaveTasksToFile extends Actions {
 
-    /**
-     * This method purpose is to act as a user guide
-     * on how saving a task is done and how it should be used for the user to
-     * to ease their usage and minimize related crashes
-     */
-
     @Override
-    public void showActionsInformation() {
+    public void showSaveTaskInstructions() {
         System.out.println("");
         System.out.println("Please enter path to file:");
 

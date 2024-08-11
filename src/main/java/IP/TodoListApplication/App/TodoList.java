@@ -204,4 +204,14 @@ public class TodoList {
             }
         }
     }
+    
+    public void markTaskAsDone(String taskId) {
+    Task task = tasks.get(taskId);
+    if (task != null) {
+        task.setStatus("Done");
+        System.out.println("Status is set as Done for the task with ID: " + taskId);
+    } else {
+        System.out.println("Task with ID: " + taskId + " not found.");
+    }
+}
 }
