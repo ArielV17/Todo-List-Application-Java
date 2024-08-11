@@ -36,8 +36,8 @@ public class TodoList {
         showApplicationTitle();
         while (TodoList.applicationRunning) {
             showAvailableActions();
-            int actionNumber = readAction();
-            executeAction(actionNumber);
+            
+            executeAction(readAction());
 
         }
     }
